@@ -1,4 +1,5 @@
 const express = require("express");
+const queryString = require("query-string");
 const router = express.Router();
 
 router.get('/message', (req, res) =>{
@@ -18,6 +19,11 @@ router.get('/exemple3', (req, res) =>{
     "brithdate": "21/10/1997"
   }
   res.status(200).send({message: message})
+})
+router.get("/queryString", (req, res)=>{
+  const message = "?limit=200"
+  const parsed = queryString.parse(message)
+  res.status(200).send(`your message: ${parsed}`)
 })
 
 
